@@ -1,50 +1,55 @@
-####Powered by python 3 and django 1.9
+**迄今最新最好的 django 中文版入门教程，全部教程请访问：http://zmrenwu.com/category/1/**
 
-> Note:
-> 目前项目共 2 个分支，blog-tutorial 分支为 Blog 教学项目，该项目附带有配套教程，请参考下方的链接。
->
-> dev 分支为我的个人博客的分支，实现了诸多更为高级的特性，并会持续完善和改进以及添加新的功能。具体特性请查看 dev 分支的 readme 文件。
+## 为什么写这个教程？
 
-### 项目配套教程
+我从去年开始接触 [Python][1]，为了能让学习 Python 的过程不那么枯燥，我决定一边学习 Python 的同时一边利用所学的东西开发一个网站。在权衡了多个 Python 界流行的 Web 框架后，我决定选择 [django][2]。
+[1]: <https://www.python.org/>
+[2]: <https://www.djangoproject.com/>
 
-注：如果你完全没有接触过 Django，强烈建议你首先阅读官方文档的入门教程，我们组织首页仓库也有其[中文翻译版本](https://github.com/djangoStudyTeam/django-intro-zh)，强烈推荐先阅读该教程以掌握 Django 开发中的一些基础知识。
+然而 django 在国内的 Web 开发者中使用率其实并不高（不仅仅是 django，包括其他 Python Web 框架例如 [Flask][3] 等也面临同样的境遇），于是寻找合适的学习资料成了一件苦差。在两个多月的时间内，我阅读 [The Django Book2.0 中文版][4]（其内容已经严重过时），然后从网上搜到了一个利用 django 开发一个简单的个人博客的教程，然而其中遇到的各种坑让我在经历了一个月的痛苦发开后彻底放弃了 django。django 高质量的中文学习资料实在太少了，而且中文社区支持也不友好，新人在开发中遇到问题通常求助无门。
+[3]: <http://flask.pocoo.org/>
+[4]: <http://djangobook.py3k.cn/2.0/>
 
-**第一周**：[Django 学习小组：博客开发实战第一周教程 —— 编写博客的 Model 和首页面](http://www.jianshu.com/p/3bf9fb2a7e31)
+大概在几个月前，我利用空闲的时间开始学习 django 的官方文档，特别是其[入门教程的 6 个 Parts][5] 循序渐进，既覆盖了 django 大部分的核心特性，又对新人十分友好，这重新激起了我对 django 的兴趣。于是我心血来潮地在网上发起了一个组建 django 五人学习小组的活动，很快便得到了大家的响应。我们以互相分享各自所学的 django 知识并且利用这些知识合作开发一个项目的形式，顺利地开发了一个 [django 个人博客][6]和一个 [django 社区应用][7]，并且还发布了一套 [django 博客教程][8]，但是由于当时自己也是学习 django 不久，对 django 的掌握程度还很不够，教程也比较简略，对想学习 django 的开发者依然不够友好。
+[5]: <https://docs.djangoproject.com/en/1.10/intro/>
+[6]: <http://zmrenwu.com/>
+[7]: <http://www.pythonzh.cn/>
+[8]: <http://www.jianshu.com/p/3bf9fb2a7e31>
 
-**第二周**：[Django 学习小组：博客开发实战第二周教程 —— 博客详情页面和分类页面](http://www.jianshu.com/p/b74a6c5382c1)
+官方文档的入门教程已经非常好了，但一方面其在语言方面（英语，在一些国内开发者的贡献下现在也有了非官方的中文翻译版本）会对国内的一些开发者产生一定的困扰，另一方面它教我们一步步开发一个简单的投票应用，我感觉这稍稍会有一点枯燥和不实用。所以我决定编写这一套教程，带领想要学习 django 开发的朋友一步步开发一个个人博客，旨在顺便代替 django 官方文档中的入门教程，让开发的过程更加有趣一点，让开发出来的东西更加实用一点。这个博客已经具备个人博客该有的基本功能，我们可以把代码部署到生产服务器上开始使用。
 
-**第三周**：[Django 学习小组：博客开发实战第三周教程——文章列表分页和代码语法高亮](http://www.jianshu.com/p/6c4615751854)
+## 谁适合这个教程？
 
-**第四周**：[Django 学习小组：博客开发实战第四周——标签云与文章归档](http://www.jianshu.com/p/1603c8494fed)
+这个教程的目的是一步步地带着大家使用 django 开发一个博客。我假设你以前从未接触过 django 但想成为一名 django 开发者，或者你略微了解过 django 但对如何使用 django 进行开发依然有一些困惑，或者是从其它的 Web 编程框架转过来的开发者。同时我假设你已经具备以下一些基本条件：
 
-**第五周**：[Django 学习小组：博客开发实战第五周——基于类的通用视图详解（一）](http://www.jianshu.com/p/00bf223873b3)
+- 了解最基本的 Python 语法，或者你从未学习过 Python 但是有学习其他编程语言的经历。
+- 了解最基本的 HTML，如果你完全不知道 HTML是个什么东西，建议花费 2-3 天时间学习这个不错的 [HTML 教程][9]。
+- （最好具备但不是必须的）HTTP 相关的基本概念，如果你目前完全没有概念也没关系，我会在教程中做适当讲解，但那时如果你依然不懂，建议花费几天时间学习其基本概念。
+[9]: <http://www.w3school.com.cn/html/>
 
-**第六周**：[Django 学习小组：博客开发实战第六周教程 —— 实现评论功能](http://www.jianshu.com/p/8aadfa2a4ab6)
+总之，[django 博客教程][10]完全面向新人，教程将带你一步步地（Step By Step）使用 django 开发一个博客，教程和官方文档的入门教程一样，涵盖了 django 开发的大部分核心特性，并且尽我所能地做到对新人友好。同时我也为大家提供了一个交流的社区（下面会介绍），以便在开发中遇到问题能得到及时的帮助。
+[10]: <https://github.com/zmrenwu/django-blog-tutorial>
 
-最佳实践一：[Django Blog 统计某个分类下有多少篇文章的优雅实现方法](http://www.jianshu.com/p/02db8f2ef200)
+## 项目预览与代码托管方式
 
-最佳实践二：[Django Blog 文章按发表时间自动归档的优雅解决方案](http://www.jianshu.com/p/3f846ecbd945)
+教程最终开发的博客将是这个样子：[django 博客教程演示项目][6]
 
-### 项目运行方式
-确保你的开发环境是 python3，如果不是，请考虑使用虚拟环境virtualenv搭建python3, 自行度娘并参照相关教程。
+代码托管在 [GitHub][10]，每篇教程的代码都放在单独的分支中，分支名看起来像是下面的样子，先后顺序我想应该很容易识别：
 
-1. fork 本项目到你的仓库
-2. 克隆你的仓库到本地
-3. 命令行执行 pip install -r requirements.txt（注意在 requirements.txt 所在目录下执行，否则请输入完整路径名）安装依赖包
-4. 迁移数据库，在 manage.py 所在目录执行
+Step1_build-development-environment
 
-        python manage.py makemigrations
-        python manage.py migrate
+Step2_create-blog-app
 
-5. 类似步骤4，运行命令创建超级用户
+## 互动方式
 
-        python manage.py createsuperuser
+教程以 Step by Step 的形式，一步步带读者使用 django 开发一个博客。通常情况下，只要你完全依照教程的指导，你将顺利地完成博客系统的开发。但尽管如此，由于开发环境的差异，即使你严格按照教程里的指导，依然有可能遇到无法预料的异常。如果你个人无法解决这些问题，你可以通过以下方式寻求帮助，这可以帮你以最快的速度解决问题。
 
-6. 类似步骤4、5，在 manage.py 所在目录执行
+- 对于简单的问题，请在我[个人博客][6]的评论区留言，每天我都会查看新的留言并且回复相关的问题。
 
-        python manage.py runserver
+  注：由于本教程会被转载到各大博客平台，不是每个平台下的留言我都会看到并回复。因此建议统一到我个人博客下留言，或者采用下面方式。
 
-7. 浏览器输入 http://127.0.0.1:8000/
+- （推荐）对于比较复杂的问题，请到社区发帖求助。同样我也会每天查看新发表的帖子，并且予以回复。在这里求助的另一个好处是其他人也能看到你的问题，并且给予建议和帮助。社区地址：http://pythonzh.cn/
 
-### 贡献人员名单：
-JFluo2011，bdbai
+## 版权声明
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/cn/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/3.0/cn/88x31.png" /></a>本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/cn/">知识共享署名-非商业性使用-禁止演绎 3.0 中国大陆许可协议</a>进行许可。
