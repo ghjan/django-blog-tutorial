@@ -24,6 +24,8 @@ def index(request):
 
 def index(request):
     post_list = Post.objects.all()
+    for post in post_list:
+        post.click = cache_manager.get_click(post)
     return render(request, 'blog/index.html', context={'post_list': post_list})
 
 
@@ -35,6 +37,10 @@ def detail(request, pk):
                                       'markdown.extensions.codehilite',
                                       'markdown.extensions.toc',
                                   ])
+    #更新缓存
+    cache_manager.update_click(post)
+    #同步数据库
+    cache_manager.sync_click()
     return render(request, 'blog/detail.html', context={'post': post})
 
 

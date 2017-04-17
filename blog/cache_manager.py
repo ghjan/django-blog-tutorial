@@ -35,12 +35,27 @@ def sync_click():
     print('同步文章点击数start....')
     for k in REDIS_DB.hkeys('CLICKS'):
         try:
-            p = Post.objects.get(k)
+            p = Post.objects.get(pk=k)
             print('db_click={0}'.format(p.click))
-            cache_click = get_click(p.id)
+            cache_click = get_click(p)
             print('cache_click={0}'.format(cache_click))
-            if cache_click != p.click:
-                p.click = get_click(p.id)
+            if int(cache_click) != p.click:
+                p.click = int(cache_click)
                 p.save()
         except:
-            pass
+            print("exception in sync_click！")
+
+
+def test_sync_click():
+    """clicks test"""
+    print('click test start....')
+    for k in REDIS_DB.hkeys('CLICKS'):
+        try:
+            p = Post.objects.get(pk=k)
+            print('db_click={0}'.format(p.click))
+            cache_click = get_click(p)
+            print('cache_click={0}'.format(cache_click))
+            if int(cache_click) != p.click:
+                print("different, should be saved")
+        except:
+            print("exception in test_sync_click！")
