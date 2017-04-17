@@ -39,6 +39,7 @@ def detail(request, pk):
                                   ])
     #更新缓存
     cache_manager.update_click(post)
+    post.click = cache_manager.get_click(post)
     #同步数据库
     cache_manager.sync_click()
     return render(request, 'blog/detail.html', context={'post': post})
