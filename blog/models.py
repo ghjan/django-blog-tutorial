@@ -1,3 +1,4 @@
+# encoding: utf-8
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.six import python_2_unicode_compatible
@@ -102,6 +103,7 @@ class Post(models.Model):
     # 和 Category 类似。
     author = models.ForeignKey(User)
 
+    click = models.PositiveIntegerField(default=0,verbose_name=u'点击数')
     def __str__(self):
         # python_2_unicode_compatible 装饰器用于兼容 Python2
         return self.title

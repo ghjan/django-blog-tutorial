@@ -1,3 +1,4 @@
+# encoding: utf-8
 """
 Django settings for blogproject project.
 
@@ -24,7 +25,7 @@ SECRET_KEY = 'i3k%m-808v3_)^h7975iw4v&fl5chq41^19j@u+b*vx7dvw*q$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -113,3 +114,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+    '/var/www/static/',
+]
+
+STATIC_ROOT = "/var/www/blog/static/"
+
+from config_cache2 import *
+# 本地开发配置放在local_settings.py中
+# try:
+#     from .local_settings import *
+# except ImportError:
+#     pass

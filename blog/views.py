@@ -1,8 +1,10 @@
+# encoding: utf-8
 import markdown
 
 from django.shortcuts import render, get_object_or_404
 
 from .models import Post, Category
+from . import cache_manager
 
 """
 使用下方的模板引擎方式。
@@ -45,3 +47,22 @@ def category(request, pk):
     cate = get_object_or_404(Category, pk=pk)
     post_list = Post.objects.filter(category=cate)
     return render(request, 'blog/index.html', context={'post_list': post_list})
+
+
+# def post_list(request):
+#     """所有已发布文章"""
+#     posts = Post.objects.annotate(num_comment=Count('comment')).filter(
+#         published_date__isnull=False).prefetch_related(
+#         'category').prefetch_related('tags').order_by('-published_date')
+#     for p in posts:
+#         p.click = cache_manager.get_click(p)
+#     return render(request, 'blog/post_list.html', {'posts': posts})
+#
+# def post_detail(request, pk):
+#     try:
+#         pass
+#     except:
+#         raise Http404()
+#     if post.published_date:
+#         cache_manager.update_click(post)
+#         post.click = cache_manager.get_click(post)
